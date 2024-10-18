@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: update repository index pour famille Debian
+    apt:
+      update_cache: yes
+
+  - name: install apache2 package
+    apt:
+      name: apache2
+      state: latest
+
+  - name: install PHP package
+    apt:
+      name: libapache2-mod-php
+      state: latest
+
