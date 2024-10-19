@@ -1,4 +1,4 @@
-centos7
-ubuntuc1
-ubuntuc2
-ubuntuc3
+centos7 apache_package=httpd php_package=php
+ubuntuc1 apache_package=apache2 php_package=libapache2-mod-php
+ubuntuc2 apache_package=apache2 php_package=libapache2-mod-php
+ubuntuc3 apache_package=apache2 php_package=libapache2-mod-php
