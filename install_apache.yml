@@ -1,19 +1,44 @@
 ---
 
+# l'instruction when accepte aussi la recherche d'un élément dans une liste :
+# when: ansible_distribution in [ "Ubuntu" , "Debian" ]
+# mais aussi les opérateurs logiques "and" "or"
+# when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "20.04"
+ 
 - hosts: all
   tasks:
 
   - name: update repository index pour famille Debian
     apt:
       update_cache: yes
+    when: ansible_distribution == "Ubuntu"
 
-  - name: install apache2 package
+  - name: install apache(apache2) package
     apt:
       name: apache2
       state: latest
+    when: ansible_distribution == "Ubuntu"
 
   - name: install PHP package
     apt:
       name: libapache2-mod-php
       state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: update repository index pour famille RedHat
+    dnf:
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install apache(httpd) package
+    dnf:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+  - name: install PHP package
+    dnf:
+      name: php
+      state: latest
+    when: ansible_distribution == "CentOS"
 
