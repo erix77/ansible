@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: linux
   tasks:
 
   - name: install updates (CentOS)
@@ -16,6 +16,23 @@
       upgrade: dist
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
+
+- hosts: workstations
+  tasks:
+
+  - name: install unzip
+    package:
+      name: unzip
+
+  - name: install terraform
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      owner: root
+      group: root
+      mode: 0755
+
 
 - hosts: web_servers
   tasks:
