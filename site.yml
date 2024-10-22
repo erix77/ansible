@@ -57,6 +57,14 @@
         update_cache: yes
       when: ansible_distribution == "CentOS"
 
+    - name: start httpd (CentOS)
+      tags: centos,apache,httpd
+      service:
+        name: httpd
+        state: started
+        enabled: true
+      when: ansible_distribution == "CentOS"
+
     - name: Copy default html file for site(test)
       tags: apache,apache2,httpd
       copy:
