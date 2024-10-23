@@ -12,14 +12,4 @@ ubuntuc3
 debian11X
 centos7sa
 
-[windows]
-msi-pc
-
-[linux]
-centos7
-centos7sa
-ubuntuc1
-ubuntuc2
-ubuntuc3
-debian11X
 
