@@ -1,0 +1,12 @@
+# Pour supprimer dépendances, binaires et fichiers de config d'un package ! Testé sur Ubuntu
+- name:
+  tags: mail,postfix
+  package:
+    name:
+      - "{{ mail_package_name }}"
+      - "{{ mta_package_name }}"
+    autoremove: yes
+    purge: yes
+    state: absent
+
+

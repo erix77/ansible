@@ -11,4 +11,9 @@ ubuntuc3
 [workstations]
 debian11X
 
-
+[mail_servers]
+ubuntuc1
+ubuntuc2
+ubuntuc3
+debian11X
+centos7

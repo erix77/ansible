@@ -4,3 +4,6 @@ php_package_name: php
 mariadb_package_name: mariadb
 ssh_users: "simone root"
 ssh_template_file: sshd_config_centos.j2
+mail_package_name: mailx
+mta_package_name: postfix
+

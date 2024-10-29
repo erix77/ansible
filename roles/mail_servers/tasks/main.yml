@@ -1,0 +1,29 @@
+- name: Install postfix and mailutils package
+  tags: mail,postfix
+  package:
+    name:
+      - "{{ mail_package_name }}"
+      - "{{ mta_package_name }}"
+    state: latest
+
+# On install postfix, puis on utilise debconf pour reconfigurer le package normalement acté lors de son installation interactive
+# postfix/main_mailer_type: No configuration
+# postfix/mailname: /etc/mailname
+ 
+- name: Install debconf-utils
+  package:
+    name:
+      - debconf-utils
+  when: ansible_distribution == "Ubuntu"
+
+- name: Configuration de Postfix
+  debconf:
+    name: postfix
+    question: "postfix/main_mailer_type"
+    value: "Internet Site"
+    vtype: "string"
+    state: "present"
+  with_items:
+    - local
+  notify: restart_postfix
+

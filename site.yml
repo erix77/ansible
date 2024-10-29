@@ -47,4 +47,8 @@
   roles:
     - file_servers
 
+- hosts: mail_servers
+  become: true
+  roles:
+    - mail_servers
 
