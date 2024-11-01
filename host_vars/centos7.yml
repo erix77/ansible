@@ -6,4 +6,21 @@ ssh_users: "simone root"
 ssh_template_file: sshd_config_centos.j2
 mail_package_name: mailx
 mta_package_name: postfix
+iperf3_package_name : iperf3
+traceroute_package_name : traceroute
+# commande ping
+iputils_package_name : iputils
+# commande nslookup
+bind-utils_package_name : bind-utils
+firewalld_package_name : firewalld
+stress_package_name : stress
+ethtool_package_name : ethtool
+# commande nc
+nmap-ncat_package_name : nmap-ncat
+iftop_package_name : iftop
+tcpdump_package_name : tcpdump
+# commande net-tools
+net-tools_package_name : net-tools
+
+
 

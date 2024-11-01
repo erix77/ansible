@@ -6,3 +6,19 @@ ssh_users: "simone root"
 ssh_template_file: sshd_config_debian.j2
 mail_package_name: mailutils
 mta_package_name: postfix
+iperf3_package_name : iperf3
+traceroute_package_name : traceroute
+# commande ping
+iputils-ping_package_name : iputils-ping
+# commande nslookup
+bind9-dnsutils_package_name : bind9-dnsutils
+firewalld_package_name : firewalld
+stress_package_name : stress
+ethtool_package_name : ethtool
+# commande nc
+nc.openbsd_package_name : netcat
+iftop_package_name : iftop
+tcpdump_package_name : tcpdump
+# commande netstat
+net-tools_package_name : net-tools
+
