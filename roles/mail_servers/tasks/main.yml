@@ -6,15 +6,15 @@
       - "{{ mta_package_name }}"
     state: latest
 
-# On install postfix, puis on utilise debconf pour reconfigurer le package normalement acté lors de son installation interactive
-# postfix/main_mailer_type: No configuration
-# postfix/mailname: /etc/mailname
+# sur Ubuntu, Debian, on install postfix, puis on utilise debconf pour reconfigurer le package
+# Fichier supplémentaire à traiter pour Ubuntu et Debian : /etc/mailname qui contient le nom du serveur local
  
 - name: Install debconf-utils
   package:
     name:
       - debconf-utils
-  when: ansible_distribution == "Ubuntu"
+    state: latest
+  when: ansible_distribution in [ "Ubuntu" , "Debian" ]
 
 - name: Configuration de Postfix
   debconf:
@@ -22,8 +22,5 @@
     question: "postfix/main_mailer_type"
     value: "Internet Site"
     vtype: "string"
-    state: "present"
-  with_items:
-    - local
-  notify: restart_postfix
+  when: ansible_distribution in [ "Ubuntu" , "Debian" ]
 

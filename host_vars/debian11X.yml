@@ -2,23 +2,33 @@ apache_package_name: apache2
 apache_service: apache2
 php_package_name: libapache2-mod-php
 mariadb_package_name: mariadb-server
-ssh_users: "simone root"
-ssh_template_file: sshd_config_debian.j2
 mail_package_name: mailutils
 mta_package_name: postfix
-iperf3_package_name : iperf3
-traceroute_package_name : traceroute
-# commande ping
-iputils-ping_package_name : iputils-ping
+#
+### PACKAGES SECURITY
+#
+ssh_users: "simone root"
+ssh_template_file: sshd_config_debian.j2
+firewalld_package_name: firewalld
+#
+### PACKAGES NETWORK DEBUG
+#
+iperf3_package_name: iperf3
+traceroute_package_name: traceroute
 # commande nslookup
-bind9-dnsutils_package_name : bind9-dnsutils
-firewalld_package_name : firewalld
-stress_package_name : stress
-ethtool_package_name : ethtool
+bind9-dnsutils_package_name: bind9-dnsutils
+stress_package_name: stress
+ethtool_package_name: ethtool
 # commande nc
-nc.openbsd_package_name : netcat
-iftop_package_name : iftop
-tcpdump_package_name : tcpdump
+netcat-traditional_package_name: netcat-traditional
+netcat-openbsd_package_name: netcat-openbsd
+iftop_package_name: iftop
+tcpdump_package_name: tcpdump
 # commande netstat
-net-tools_package_name : net-tools
+net-tools_package_name: net-tools
+#
+### PACKAGES OS DEBUG
+#
+# package sysstat pour la commande sar
+sysstat_package_name: sysstat
 
