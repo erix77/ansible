@@ -1,0 +1,12 @@
+---
+# Remplace les vmware-tools natifs par les vmware-tools hadhoc de l'esxi
+
+- hosts: gitserver
+  tasks:
+
+  - name: Remove vmware-tools natifs
+    tags: vmtools
+    package:
+      name: "{{ vmware_natif_package_name }}"
+      state: absent
+

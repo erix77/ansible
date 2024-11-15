@@ -1,5 +1,6 @@
 [web_servers]
 centos7
+debian11X
 ubuntuc1
 
 [db_servers]
@@ -17,3 +18,12 @@ ubuntuc2
 ubuntuc3
 debian11X
 centos7
+
+[git_servers]
+gitserver
+
+[cyber_servers]
+kalilinux
+
+[monitor_servers]
+srvlog

@@ -18,6 +18,7 @@
 
 - hosts: all
   become: true
+  remote_user: root
   tasks:
 
   - name: Create user simone
