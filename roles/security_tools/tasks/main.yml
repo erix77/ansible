@@ -1,0 +1,14 @@
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  tags: selinux
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
+  when: ansible_distribution in [ "CentOS","AlmaLinux" ] 
+
+- name: Check if AppArmor is running
+  tags: apparmor
+  service:
+    name: apparmor
+    state: started
+    enabled: true
+  when: ansible_distribution in [ "Debian","Ubuntu","Kali GNU/Linux" ]

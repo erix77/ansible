@@ -4,12 +4,12 @@
   become: true
   pre_tasks:
 
-  - name: Updates repo cache (CentOS)
+  - name: Updates repo cache (CentOS and AlmaLinux)
     tags: always
     dnf:
       update_cache: yes
     changed_when: false
-    when: ansible_distribution == "CentOS"
+    when: ansible_distribution in [ "CentOS","AlmaLinux" ]
  
   - name: Update repo cache (Ubuntu and Debian)
     tags: always
@@ -24,13 +24,16 @@
   roles:
     - base
 
-
 - hosts: workstations
   gather_facts: False
   become: true
   roles:
     - workstations
 
+- hosts: all
+  become: true
+  roles:
+    - security_tools
 
 - hosts: web_servers
   gather_facts: False

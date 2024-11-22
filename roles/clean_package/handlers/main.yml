@@ -1,0 +1,5 @@
+- name: supp_pack_modemmanager
+  package:
+    name: modemmanager
+    state: absent
+

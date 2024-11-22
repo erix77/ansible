@@ -1,0 +1,8 @@
+- name: Stop useless service
+  tags: useless
+  service:
+    name: ModemManager
+    state: stopped
+    enabled: false
+  notify: supp_pack_modemmanager
+

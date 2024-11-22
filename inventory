@@ -12,18 +12,41 @@ ubuntuc3
 [workstations]
 debian11X
 
-[mail_servers]
+[debian_servers]
 ubuntuc1
 ubuntuc2
 ubuntuc3
 debian11X
+kalilinux
+gitserver
+srvlog
+
+[redhat_servers]
 centos7
+centos7sa
+almalinux8
 
 [git_servers]
 gitserver
 
 [cyber_servers]
 kalilinux
+almalinux8
 
 [monitor_servers]
 srvlog
+
+[master_mail_server]
+centos7sa
+
+[mail_servers]
+ubuntuc1
+ubuntuc2
+ubuntuc3
+debian11X
+kalilinux
+gitserver
+srvlog
+centos7
+almalinux8
+
