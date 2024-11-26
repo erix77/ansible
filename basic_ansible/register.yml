@@ -1,0 +1,14 @@
+---
+- hosts: target
+  tasks:
+    - name: Create a file
+      file:
+        path: /home/simone/newfile
+        state: touch
+      register: output
+    - debug: msg="Register output is {{output}}"
+    - name: Write in file
+      lineinfile:
+        path: /home/simone/newfile
+        line: "{{output.uid}}"
+

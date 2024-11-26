@@ -1,0 +1,10 @@
+---
+- hosts: local
+  vars:
+    myvar: "Bienvenue sur mon serveur ansible"
+
+  tasks:
+    - name: variable define in  playbook
+      debug:
+        msg: "{{myvar}}"
+    

@@ -1,0 +1,17 @@
+---
+- name: Learn Magic Variables
+  hosts: target
+  gather_facts: false
+  tasks:
+    - name: Show hostname in inventory 
+      debug:
+        msg: "{{ inventory_hostname }}"
+    - name: Show all groups in inventory
+      debug:
+        msg: "{{ groups }}"
+    - name: Show Group of host
+      debug:
+        msg: "{{ group_names }}"
+    - name: Show Host Variable
+      debug:
+        msg: "{{ hostvars }}"
