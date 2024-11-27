@@ -2,8 +2,8 @@
 
 # Arret de toutes les VMs actives sur serveur ESXI :
 #
-# sshpass -p 333Points\!\!\! ssh root@esxi ls
-# sshpass -p 333Points\!\!\! ssh root@esxi esxcli vm process list
+# sshpass -p xxxxxxxxx ssh root@esxi ls
+# ssh root@esxi esxcli vm process list
 #
 # La commande renvoie ci-dessous, le champ "World ID: 527611" est nécessaire pour demander l'arret d'une VM
 #
@@ -24,33 +24,33 @@
 #   Config File: /vmfs/volumes/661ab9c9-ea3e9a38-f0ba-d89ef3ff34e7/ubuntuc2/ubuntuX.vmx
 #
 # esxcli vm process kill --type <soft|hard|force> --world-id <vm_ID>
-# sshpass -p 333Points\!\!\! ssh root@esxi esxcli vm process list | grep " World ID" | awk '{ print $3 }'
+# ssh root@esxi esxcli vm process list | grep " World ID" | awk '{ print $3 }'
 # 
 # Mise en Maintenance de l'ESXi :
-# sshpass -p 333Points\!\!\! ssh root@esxi esxcli system maintenanceMode set -e true
+# ssh root@esxi esxcli system maintenanceMode set -e true
 #
 # Arret de l'ESXi :
-# sshpass -p 333Points\!\!\! ssh root@esxi esxcli system shutdown poweroff --reason=Fin_de_la_Journée
+# ssh root@esxi esxcli system shutdown poweroff --reason=Fin_de_la_Journée
 
-Liste_VMs=$(sshpass -p 333Points\!\!\! ssh root@esxi esxcli vm process list | grep " World ID" | awk '{ print $3 }')
+Liste_VMs=$(ssh root@esxi esxcli vm process list | grep " World ID" | awk '{ print $3 }')
 
 if [[ -n Liste_VMs ]]
 then
   for id_vms in $(echo $Liste_VMs)
   do
-    sshpass -p 333Points\!\!\! ssh root@esxi esxcli vm process kill --type soft --world-id $id_vms
+    ssh root@esxi esxcli vm process kill --type soft --world-id $id_vms
     echo Arret de la vm $id_vms
-    sleep 5
+    sleep 3
   done
 else
   echo Toutes les VMs sont arretées
 fi
 
 #echo Mise en Maintenance de l\'ESXi
-#sshpass -p 333Points\!\!\! ssh root@esxi esxcli system maintenanceMode set -e true
+#ssh root@esxi esxcli system maintenanceMode set -e true
 
 #echo Arrêt de l\'ESXi
-#sshpass -p 333Points\!\!\! ssh root@esxi esxcli system shutdown poweroff --reason=Fin_de_la_Journée
+#ssh root@esxi esxcli system shutdown poweroff --reason=Fin_de_la_Journée
 
 
 
