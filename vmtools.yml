@@ -1,12 +1,51 @@
 ---
 # Remplace les vmware-tools natifs par les vmware-tools hadhoc de l'esxi
 
-- hosts: gitserver
+- hosts: almalinux8
+  become: yes
+  vars:
+    vmware_tools_old: open-vm-tools
   tasks:
 
   - name: Remove vmware-tools natifs
     tags: vmtools
     package:
-      name: "{{ vmware_natif_package_name }}"
+      name: "{{ vmware_tools_old }}"
       state: absent
+
+  - name: Creat directory /Depots
+    file:
+      path: /Depots
+      state: directory
+      mode: '0755'
+
+  - name: Copy new package VMwareTools-10.3.25-20206839.tar.gz in /Depots
+    copy:
+      src: /Depots/VMwareTools-10.3.25-20206839.tar.gz
+      dest: /Depots/VMwareTools-10.3.25-20206839.tar.gz
+
+  - name: Install packages TAR, GZIP, BZIP2, UNZIP et PERL
+    package:
+      name:
+        - tar
+        - gzip
+        - bzip2
+        - unzip
+        - perl
+      state: present
+
+  - name: Uncompress tar.gz file
+    unarchive:
+      src: /Depots/VMwareTools-10.3.25-20206839.tar.gz
+      dest: /Depots
+      remote_src: yes
+
+#- name: Install VMwareTools
+#shell: "/Depots/vmware-tools-distrib/vmware-install.pl"
+#register: result
+#
+#- name: Check if success
+#debug:
+#msg: "La commande a échoué avec le message : {{ result.stderr }}"
+#failed_when: result.rc != 0
 
