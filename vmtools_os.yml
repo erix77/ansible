@@ -1,0 +1,33 @@
+---
+# Retour arriere ; enleve les vmwaretools de l'esxi et réactive les openvmtools de l'OS
+# /Depots/vmware-tools-distrib/bin/vmware-uninstall-tools.pl
+
+- hosts: all
+  become: yes
+  vars:
+    openvmtools: open-vm-tools
+  tasks:
+
+  - name: Check if /Depots/vmware-tools-distrib is present
+    stat:
+      path: /Depots/vmware-tools-distrib
+    register: directory
+
+  - name: Uninstall vmwaretools if directory exist
+    command: /Depots/vmware-tools-distrib/bin/vmware-uninstall-tools.pl
+    when: directory.stat.exists
+
+  - name: Remove directory vmwaretools
+    file:
+      path: /Depots/vmware-tools-distrib
+      state: absent
+
+  - name: Install distribution openvmtools
+    package:
+      name: "{{ openvmtools }}"
+      state: present
+
+
+
+
+

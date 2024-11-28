@@ -1,5 +1,5 @@
 ---
-# Retour arriere ; enleve les wmwaretools de l'esxi et réactive les openvmtools de l'OS
+# Remplace les vmware-tools natifs par les vmware-tools hadhoc de l'esxi
 
 - hosts: almalinux8
   become: yes
