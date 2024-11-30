@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Check resolver
+    command: cat /etc/resolv.conf
+    register: stdout
+
+  - name: Print resolv.conf
+    debug:
+      msg: "{{ stdout.stdout_lines }}"
+
