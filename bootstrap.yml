@@ -1,7 +1,8 @@
 ---
 
-- hosts: all
+- hosts: ubuntu
   become: true
+  remote_user: root
   pre_tasks:
 
   - name: Update repository cache (CentOS)
@@ -16,7 +17,7 @@
       update_cache: yes
     when: ansible_distribution in ["Ubuntu","Debian"]
 
-- hosts: all
+- hosts: ubuntu
   become: true
   remote_user: root
   tasks:

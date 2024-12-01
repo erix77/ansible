@@ -1,14 +1,15 @@
 ---
 
 - hosts: all
+  become: yes
   tasks:
 
-  - name: Check resolver
-    shell: cat /etc/resolv.conf | grep -v "^#"
+  - name: Check that the network interfaces are static
+    shell: ip address | grep "inet 192."
     register: stdout
     changed_when: false
 
-  - name: Print resolv.conf
+  - name: Print interfaces
     debug:
       msg: "{{ stdout.stdout_lines }}"
     changed_when: false

@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: yes
+  vars:
+    system_admin_email: root@local
+  tasks:
+
+  - name: Configure /etc/motd
+    template:
+      dest: /etc/motd
+      src: motd.j2
+

@@ -1,4 +1,4 @@
 #! /bin/bash
 cd ~/.ssh
 ssh-copy-id $1
-ssh-copy-id -i /home/ansible/.ssh/ansible.pub $1
+#ssh-copy-id -i /home/ansible/.ssh/ansible.pub $1
