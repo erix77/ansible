@@ -1,6 +1,6 @@
 -------------------------------------------------
 Welcome to {{ ansible_facts.hostname }}
-Your connexion use {{ ansible_facts.interfaces[1] }} in {{ ansible_facts.default_ipv4.address }}
+Your connexion use {{ ansible_facts.default_ipv4.interface }} in {{ ansible_facts.default_ipv4.address }}
 
 If you have any issues, please contact {{ system_admin_email }}
 This message is configured by Ansible

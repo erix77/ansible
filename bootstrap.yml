@@ -1,6 +1,6 @@
 ---
 
-- hosts: ubuntu
+- hosts: glpi
   become: true
   remote_user: root
   pre_tasks:
@@ -17,7 +17,7 @@
       update_cache: yes
     when: ansible_distribution in ["Ubuntu","Debian"]
 
-- hosts: ubuntu
+- hosts: glpi
   become: true
   remote_user: root
   tasks:
