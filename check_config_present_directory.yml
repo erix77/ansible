@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: Is directory present ?
+      stat:
+        path: /Depots
+      register: stdout
+      changed_when: false
+
+    - name: Print result
+      debug:
+        msg: "{{ stdout.stat.exists }}"

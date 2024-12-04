@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: Is package present ?
+      shell: perl --version | grep -i version
+      register: stdout
+      changed_when: false
+
+    - name: Print result
+      debug:
+        msg: "{{ stdout.stdout_lines }}"

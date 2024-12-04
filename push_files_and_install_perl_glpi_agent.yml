@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    - glpi_agent: glpi-agent-1.7-linux-installer.pl
+  tasks:
+    - name: Copy file on the remote machine
+      copy:
+        src: "{{ glpi_agent }}"
+        dest: /Depots
+        mode: '0740'
+
+    - name: Install and active linux glpi agent
+      command: perl /Depots/glpi-agent-1.7-linux-installer.pl --server=http://glpi.local/glpi/plugins/glpiinventory/

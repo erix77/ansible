@@ -12,5 +12,4 @@
   - name: Print interfaces
     debug:
       msg: "{{ stdout.stdout_lines }}"
-    changed_when: false
 
