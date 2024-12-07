@@ -1,0 +1,17 @@
+---
+- hosts: glpi
+  become: yes
+  tasks:
+    - name: Copy files on the remote machine
+      copy:
+        src: "{{ item }}"
+        dest: /Depots
+        mode: '0740'
+      loop:
+        - /Depots/glpi-agent-1.11-linux-installer.pl
+        - /Depots/glpi-reports-1.16.0.tar.gz
+        - /Depots/glpi-mreporting-1.8.6.tar.bz2
+
+
+#- name: Install and active linux glpi agent
+# command: perl /Depots/{{ glpi_agent }} --server=http://glpi.local/glpi/plugins/glpiinventory/
