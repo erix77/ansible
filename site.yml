@@ -16,48 +16,48 @@
     apt:
       update_cache: yes
     changed_when: false
-    when: ansible_distribution in ["Ubuntu","Debian"]
+    when: ansible_distribution in ["Ubuntu","Debian","Kali GNU/Linux"]
 
-- hosts: all
+- hosts: redhat_servers
   gather_facts: False
   become: true
   roles:
     - base
 
-- hosts: workstations
-  gather_facts: False
-  become: true
-  roles:
-    - workstations
-
-- hosts: all
-  become: true
-  roles:
-    - security_tools
-
-- hosts: web_servers
-  gather_facts: False
-  become: true
-  roles:
-    - web_servers
-
-
-- hosts: db_servers
-  gather_facts: False
-  become: true
-  roles:
-    - db_servers
-
-
-- hosts: file_servers
-  gather_facts: False
-  become: true
-  roles:
-    - file_servers
-
-- hosts: mail_servers
-  gather_facts: False
-  become: true
-  roles:
-    - mail_servers
-
+##- hosts: workstations
+##  gather_facts: False
+##  become: true
+##  roles:
+##    - workstations
+##
+##- hosts: all
+##  become: true
+##  roles:
+##    - security_tools
+##
+##- hosts: web_servers
+##  gather_facts: False
+##  become: true
+##  roles:
+##    - web_servers
+##
+##
+##- hosts: db_servers
+##  gather_facts: False
+##  become: true
+##  roles:
+##    - db_servers
+##
+##
+##- hosts: file_servers
+##  gather_facts: False
+##  become: true
+##  roles:
+##    - file_servers
+##
+##- hosts: mail_servers
+##  gather_facts: False
+##  become: true
+##  roles:
+##    - mail_servers
+##

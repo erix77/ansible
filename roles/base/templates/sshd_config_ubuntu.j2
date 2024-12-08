@@ -36,7 +36,7 @@ AllowUsers {{ ssh_users }}
 PermitRootLogin yes
 #StrictModes yes
 #MaxAuthTries 6
-#MaxSessions 10
+MaxSessions 3
 
 #PubkeyAuthentication yes
 
@@ -88,7 +88,7 @@ ChallengeResponseAuthentication no
 UsePAM yes
 
 #AllowAgentForwarding yes
-#AllowTcpForwarding yes
+AllowTcpForwarding no
 #GatewayPorts no
 X11Forwarding yes
 #X11DisplayOffset 10
@@ -100,7 +100,7 @@ PrintMotd no
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
-#ClientAliveCountMax 3
+ClientAliveCountMax 2
 #UseDNS no
 #PidFile /var/run/sshd.pid
 #MaxStartups 10:30:100
