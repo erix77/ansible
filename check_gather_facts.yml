@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  gather_facts: true
+  tasks:
+
+  - name: Test connexion and User
+    command: /usr/bin/id
+    register: stdout
+
+  - name: Print result
+    debug:
+      msg: "{{ stdout }}"
+ 

@@ -1,24 +1,26 @@
 ---
 
-- hosts: glpi
-  become: true
-  remote_user: root
-  pre_tasks:
+##- hosts: kalilinux
+##  become: true
+##  remote_user: root
+##  gather_facts: true
+##  pre_tasks:
+##
+##  - name: Update repository cache (CentOS)
+##    tags: always
+##    dnf:
+##      update_cache: yes
+##    when: ansible_distribution in ["CentOS","AlmaLinux"]
+## 
+##  - name: Updates repository cache (Ubuntu and Debian)
+##    tags: always
+##    apt:
+##      update_cache: yes
+##    when: ansible_distribution in ["Ubuntu","Debian","Kali GNU/Linux"]
 
-  - name: Update repository cache (CentOS)
-    tags: always
-    dnf:
-      update_cache: yes
-    when: ansible_distribution == "CentOS"
- 
-  - name: Updates repository cache (Ubuntu and Debian)
-    tags: always
-    apt:
-      update_cache: yes
-    when: ansible_distribution in ["Ubuntu","Debian"]
-
-- hosts: glpi
+- hosts: kalilinux
   become: true
+  gather_facts: false
   remote_user: root
   tasks:
 

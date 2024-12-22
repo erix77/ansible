@@ -8,8 +8,13 @@
     register: stdout
     changed_when: false
 
+  - name: Check resolver
+    shell: cat /etc/resolv.conf | grep -i "generated"
+    register: generated
+    changed_when: false
+
   - name: Print resolv.conf
     debug:
-      msg: "{{ stdout.stdout_lines }}"
+      msg: "{{ stdout.stdout_lines, generated.stdout_lines[0] }}"
     changed_when: false
 

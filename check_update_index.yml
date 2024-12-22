@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+
+  - name: Update repository cache (CentOS)
+    tags: always
+    dnf:
+      update_cache: yes
+    when: ansible_distribution in ["CentOS","AlmaLinux"]
+ 
+  - name: Updates repository cache (Ubuntu and Debian)
+    tags: always
+    apt:
+      update_cache: yes
+    when: ansible_distribution in ["Ubuntu","Debian","Kali GNU/Linux"]
+
+ 

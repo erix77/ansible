@@ -1,8 +1,6 @@
 #
-### VMWARE TOOLS
-#
-vmware_natif_package_name: open-vm-tools
-#
+### SPECIALS CONFIG FOR THIS HOST 
+ansible_python_interpreter: /root/.pyenv/versions/2.7.18/bin/python
 ### PACKAGES APPLICATIFS (WEB, DB, MAIL, DNS)
 #
 apache_package_name: apache2
