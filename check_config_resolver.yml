@@ -1,6 +1,7 @@
 ---
 
 - hosts: all
+  gather_facts: false
   tasks:
 
   - name: Check resolver
@@ -9,7 +10,7 @@
     changed_when: false
 
   - name: Check resolver
-    shell: cat /etc/resolv.conf | grep -i "generated"
+    shell: cat /etc/resolv.conf | grep -i -E "generated|managed"
     register: generated
     changed_when: false
 

@@ -1,0 +1,11 @@
+---
+
+- hosts: ubuntuc1
+  become: true
+  tasks:
+
+  - name: Configure static /etc/resolv.conf
+    template:
+      dest: /etc/resolv.conf
+      src: resolv.conf.j2
+
